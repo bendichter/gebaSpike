@@ -725,11 +725,9 @@ def importspikes(filename):
 
     t = spike_data[t_indices].reshape(num_spikes, bytes_per_timestamp)  # acquiring the time bytes
     t = np.sum(np.multiply(t, big_endian_vector), axis=1) / timebase  # converting from bytes to float values
-    t_indices = None
 
     waveform_data = np.zeros((number_channels, num_spikes, samples_per_spike))  # (dimensions, rows, columns)
 
-    bytes_offset = 0
     # read the t,ch1,t,ch2,t,ch3,t,ch4
 
     for chan in range(number_channels):  # only really care about the first time that gets written
