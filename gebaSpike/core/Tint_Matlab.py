@@ -1,7 +1,6 @@
 from __future__ import division, print_function
 import numpy as np
 import struct, os
-import numpy.matlib
 from scipy.io import savemat
 import mmap
 import contextlib
@@ -711,7 +710,7 @@ def importspikes(filename):
                 # calculating the big-endian and little endian matrices so we can convert from bytes -> decimal
     big_endian_vector = 256 ** np.arange(bytes_per_timestamp - 1, -1, -1)
     little_endian_matrix = np.arange(0, bytes_per_sample).reshape(bytes_per_sample, 1)
-    little_endian_matrix = 256 ** numpy.matlib.repmat(little_endian_matrix, 1, samples_per_spike)
+    little_endian_matrix = 256 ** np.matlib.repmat(little_endian_matrix, 1, samples_per_spike)
 
     number_channels = 4
 
